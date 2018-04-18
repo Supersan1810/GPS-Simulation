@@ -36,7 +36,7 @@ importSeries=dlmread(SERIES_FILE);
 %% Record signal
 
 %recSignal=recordSignal(DURATION,FS);
-[recSignal,~]=audioread("Testaufnahme1.wav");
+[recSignal,~]=audioread(which('Testaufnahme1.wav'));
 
 %% calculate correlation and find max (find peaks)
 consLength=length(importSeries)*SAMPLENUM; %considered Length
@@ -49,7 +49,7 @@ end
 pseudoT=maxSample'/FS;
 
 %% plots
-    generatePlots(importSeries, recSignal,correlationArray,maxSample);
+    generatePlots(importSeries, recSignal,correlationArray,maxSample,FS);
     
 %% gps correction
     [t,position] = gpsCorrection(SPEAKER_POS, pseudoT);
