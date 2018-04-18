@@ -22,7 +22,7 @@ function gpsdemo4
 %                       t
 %                       
 %% constants:
-%               [4,2] : SPEAKER_POS
+SPEAKER_POS=[9.19,2.82;9.12,6.63;0.3,1.39;0.3,6.11];
 SERIES_FILE="SAT_gold1023x5.txt";
 DURATION=10;
 FS=22050;
@@ -46,10 +46,11 @@ for speakerN=1:SPEAKERNUM
 end
 
 %% gps correction
-
+    [t,position] = gpsCorrection(SPEAKER_POS, pseudoT);
 
 %% plots and position on map
-
+    Karte(position);
+    generatePlots(importSeries, recSignal,correlationArray);
 
 
 
