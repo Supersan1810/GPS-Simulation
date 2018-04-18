@@ -14,8 +14,14 @@ function gpsdemo4
 % output parameter: 
 %                   0 = 
 % variables:    
-%               [4,*] : importSeries 
-%               [
+%               [*,4] : importSeries 
+%               [*,1] : recSignal
+%                       correlation
+%                       pseudoT
+%               [2,4] : SpeakerPos
+%                       position
+%                       t
+%                       
 %% Perform function
 %% Import series
 
@@ -23,7 +29,7 @@ function gpsdemo4
 %% Record signal
 
 
-%% calculate correlation and find max
+%% calculate correlation and find max (find peaks)
 
 
 %% gps correction
