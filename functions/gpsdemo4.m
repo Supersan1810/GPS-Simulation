@@ -18,7 +18,7 @@ function gpsdemo4
 %               [*,1] : recSignal
 %                       correlation
 %                       pseudoT
-%               [2,4] : SpeakerPos
+%               [2,4] : speakerPos
 %                       position
 %                       t
 %                       
@@ -33,10 +33,11 @@ function gpsdemo4
 
 
 %% gps correction
-
+    [t,position] = gpsCorrection(SPEAKER_POS, pseudoT);
 
 %% plots and position on map
-
+    Karte(position);
+    generatePlots(importSeries, recSignal,correlationArray);
 
 
 
