@@ -17,9 +17,9 @@ function gpsdemo4
 %               [*,4] : importSeries 
 %               [*,1] : recSignal
 %               [*,4] : correlationArray
-%                       pseudoT
-%                       position
-%                       t
+%               [4,1] : pseudoT
+%               [2,1] : position
+%               [1,1] : t
 %                       
 %% constants:
 SPEAKER_POS=[9.19,2.82;9.12,6.63;0.3,1.39;0.3,6.11];
@@ -45,12 +45,19 @@ for speakerN=1:SPEAKERNUM
     correlationArray(:,speakerN)=correlation(recSignal(1:consLength,1),importSeries(:,speakerN));
 end
 
+[~,maxSample]=max(correlationArray(:,:));
+pseudoT=maxSample'/FS;
+
+%% plots
+    generatePlots(importSeries, recSignal,correlationArray,maxSample);
+    
 %% gps correction
     [t,position] = gpsCorrection(SPEAKER_POS, pseudoT);
-
-%% plots and position on map
+    
+%% map plot 
     Karte(position);
-    generatePlots(importSeries, recSignal,correlationArray);
+
+
 
 
 

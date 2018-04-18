@@ -1,4 +1,4 @@
-function generatePlots(importSeries, recSignal,correlationArray)
+function generatePlots(importSeries, recSignal,correlationArray, maxSample)
 % Summary: generates plots showing the recorded Signal and its correlation
 % 
 % Matlab Herrler
@@ -32,16 +32,20 @@ function generatePlots(importSeries, recSignal,correlationArray)
         title('recordedSignal');
     for i=1:4
         subplot(5,1,i+1);
-            plot(importSeries(window,i);
+            plot(importSeries(window,i));
             title(sprintf('Signal from speaker no %d',i));
     end
     
 %% Plot: correlation
     figure('Name','Correlation of Signals','NumberTitle','off'); 
     for i=1:4
-        subplot(4,1,1);
+        subplot(4,1,i);
+            hold on
             plot(correlationArray(:,i));
+            scatter(maxSample(i), correlationArray(maxSample(i),i));
             title(sprintf('Correlation to speaker no %d',i));
+            
+            hold off
     end
 
 
