@@ -16,11 +16,12 @@ function result = correlation(x,y)
 %
 %% Perform function
 
+    N=length(y);
     x=[x;zeros(size(x))];
     x=x-mean(x);
-    N=length(x0);
-    result=zeros(N-1,1);
+    result=zeros(1,N-1);
     for k=1:N
-        result(k,1)=abs(sum(x(k:N+k-1,1).*y(1:N,1)))/N;
+        result(1,k)=abs(sum(x(k:N+k-1,1).*y(1:N,1)))/N;
     end
 end
+

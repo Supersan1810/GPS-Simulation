@@ -9,28 +9,41 @@ function gpsdemo4
 %
 % function syntax:
 % function gpsdemo4
-% input parameter:  i             = 
+% input parameter:
 % 
 % output parameter: 
-%                   0 = 
+%                  
 % variables:    
 %               [*,4] : importSeries 
 %               [*,1] : recSignal
-%                       correlation
+%               [*,4] : correlationArray
 %                       pseudoT
-%               [2,4] : SpeakerPos
 %                       position
 %                       t
 %                       
-%% Perform function
+%% constants:
+%               [4,2] : SPEAKER_POS
+SERIES_FILE="SAT_gold1023x5.txt";
+DURATION=10;
+FS=22050;
+SAMPLENUM=1;
+SPEAKERNUM=4;
+
 %% Import series
 
+importSeries=dlmread(SERIES_FILE);
 
 %% Record signal
 
+%recSignal=recordSignal(DURATION,FS);
+[recSignal,~]=audioread("Testaufnahme1.wav");
 
 %% calculate correlation and find max (find peaks)
-
+consLength=length(importSeries)*SAMPLENUM; %considered Length
+correlationArray=zeros(consLength,SPEAKERNUM);
+for speakerN=1:SPEAKERNUM
+    correlationArray(:,speakerN)=correlation(recSignal(1:consLength,1),importSeries(:,speakerN));
+end
 
 %% gps correction
 
