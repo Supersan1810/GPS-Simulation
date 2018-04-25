@@ -24,7 +24,7 @@ function gpsdemo4
 %% constants:
 SPEAKER_POS=[9.19,2.82;9.12,6.63;0.3,1.39;0.3,6.11];
 SERIES_FILE="SAT_gold1023x5.txt";
-DURATION=10;
+%DURATION=10;
 FS=22050;
 SAMPLENUM=1;
 SPEAKERNUM=4;
@@ -35,14 +35,16 @@ importSeries=dlmread(SERIES_FILE);
 
 %% Record signal
 
-%recSignal=recordSignal(DURATION,FS);
-[recSignal,~]=audioread("Testaufnahme1.wav");
+l=length(importSeries);
+recSignal=recordSignal(l/FS,FS);
+%[recSignal,~]=audioread("Testaufnahme1.wav");
+assignin('base','recSignal',recSignal);
 
 %% calculate correlation and find max (find peaks)
 consLength=length(importSeries)*SAMPLENUM; %considered Length
 correlationArray=zeros(consLength,SPEAKERNUM);
 for speakerN=1:SPEAKERNUM
-    correlationArray(:,speakerN)=correlation(recSignal(1:consLength,1),importSeries(:,speakerN));
+    correlationArray(:,speakerN)=correlation(recSignal,importSeries(:,speakerN));
 end
 
 [~,maxSample]=max(correlationArray(:,:));
