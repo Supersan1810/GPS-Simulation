@@ -20,10 +20,17 @@ function result = correlation(x,y)
     y=[y;zeros(size(y))];
     x=x-mean(x);
     y=y-mean(y);
-    result=zeros(1,N-1);
+    result=zeros(1,N);
     for k=1:N
         result(1,k)=abs(sum(y(k:N+k-1,1).*x(1:N,1)))/N;
     end
-    result=fliplr(result); % for some reason only (y,x) works, so we flip the result
+    result=abs(result)/N;
+    %result=fliplr(result); % for some reason only (y,x) works, so we flip the result
 end
+
+        %{
+            for n=1:N
+                result(1,k)=result(1,k)+y(n+k-1,1).*x(n,1);
+            end
+        %}
 

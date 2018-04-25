@@ -35,16 +35,17 @@ importSeries=dlmread(SERIES_FILE);
 
 %% Record signal
 
-l=length(importSeries);
-recSignal=recordSignal(l/FS,FS);
+l=ceil(length(importSeries)/FS);
+%recSignal=recordSignal(l,FS);
 %[recSignal,~]=audioread("Testaufnahme1.wav");
+recSignal=evalin('base', 'recSignal');
 assignin('base','recSignal',recSignal);
 
 %% calculate correlation and find max (find peaks)
 consLength=length(importSeries)*SAMPLENUM; %considered Length
 correlationArray=zeros(consLength,SPEAKERNUM);
 for speakerN=1:SPEAKERNUM
-    correlationArray(:,speakerN)=correlation(recSignal,importSeries(:,speakerN));
+    correlationArray(:,speakerN)=correlation(recSignal(1:consLength,1),importSeries(:,speakerN));
 end
 
 [~,maxSample]=max(correlationArray(:,:));
