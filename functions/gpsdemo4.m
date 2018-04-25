@@ -47,7 +47,7 @@ end
 
 [~,maxSample]=max(correlationArray(:,:));
 pseudoT=maxSample'/FS;
-pseudoT=[0.153;0.158;0.162;0.163];
+%pseudoT=[0.153;0.158;0.162;0.163];
 
 %% plots
     generatePlots(importSeries,recSignal,correlationArray,maxSample,FS);
@@ -56,6 +56,7 @@ pseudoT=[0.153;0.158;0.162;0.163];
     [t,position] = gpsCorrection(SPEAKER_POS, pseudoT);
     
 %% map plot 
+    figure;
     Karte(position);
 
 

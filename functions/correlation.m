@@ -1,4 +1,4 @@
-function result = correlation(x,y)
+function result = correlation(y,x)
 % Summary: 
 % 
 % Matlab Herrler
@@ -19,9 +19,13 @@ function result = correlation(x,y)
     N=length(y);
     x=[x;zeros(size(x))];
     x=x-mean(x);
+    y=y-mean(y);
     result=zeros(1,N-1);
     for k=1:N
-        result(1,k)=abs(sum(x(k:N+k-1,1).*y(1:N,1)))/N;
+        for i=1:N
+            result(1,k)=result(1,k)+x(i+k-1)*y(i);
+        end
     end
+    result=abs(result)/N;
 end
 
