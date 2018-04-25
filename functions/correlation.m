@@ -22,10 +22,8 @@ function result = correlation(y,x)
     y=y-mean(y);
     result=zeros(1,N-1);
     for k=1:N
-        for i=1:N
-            result(1,k)=result(1,k)+x(i+k-1)*y(i);
-        end
+        result(1,k)=abs(sum(x(k:N+k-1,1).*y(1:N,1)))/N;
     end
-    result=abs(result)/N;
+    result=fliplr(result); % for some reason only (y,x) works, so we flip the result
 end
 
