@@ -1,27 +1,29 @@
 function result = recordSignal(duration,Fs)
-% result = recordSignal(duration) 
-%   input parameters:     
-%       float:     duration                in s
-%                   Fs
-%   output parameters:    
-%       double[N]:   result                 recorded Signal
-%       
-
-% Project: GPS Demo Herrler
-% Author:  J.Gente
+% Records audio for the length *duration* (in s) using Fs as sample rate
+% 
+% ------------------------------------------------------------------------
+% Copyright (c) 2018. J. Gente, S. García Bescós
+% This code is released under the GNU General Public License Version 3.
+%
+% Project: Matlab Lecture, Hans Juergen Herrler
+% Authors: Sandra García Bescós, Johanna Gente
 % Version: 1.0
+%-------------------------------------------------------------------------
+%
+% Input Parameters: 
+%       double                  : duration              length of the record (in s)
+%       double                  : Fs                    sample rate
+% Output Parameters: 
+%       double[duration/Fs,1]   : result                recorded Signal
+%
+% Other Output: 
+%       none
 
-%   variables: 
-%       double[]    result
-%       int         N                   array length
-% x0,y0,k
-
-Bits=16; Channels=1; %whatever, random
+Bits=16; Channels=1;
 Recorder=audiorecorder(Fs,Bits,Channels);
 record(Recorder,duration);
 pause(duration);
 result=getaudiodata(Recorder);
-%soundsc(result,Fs); %play to debug
 
 end
 
