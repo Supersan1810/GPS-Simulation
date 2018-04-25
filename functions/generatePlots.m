@@ -19,7 +19,8 @@ function generatePlots(importSeries, recSignal,correlationArray, maxSample,FS)
     time=(1:length(recSignal))/FS;
 %% Plot: recorded Signal
     figure('Name','Recorded Signal','NumberTitle','off'); 
-    plot(time,recSignal);
+    t=(1:length(recSignal))/FS;
+    plot(t,recSignal);
     title('Signal from all speakers');
     xlabel('t in sec');
     ylabel('');
@@ -41,8 +42,9 @@ function generatePlots(importSeries, recSignal,correlationArray, maxSample,FS)
     for i=1:4
         subplot(4,1,i);
             hold on
-            plot(correlationArray(:,i));
-            scatter(maxSample(i), correlationArray(maxSample(i),i));
+            timeVector=(1:length(correlationArray))'/FS*1000;
+            plot(timeVector,correlationArray(:,i));
+            scatter(maxSample(i)/FS*1000, correlationArray(maxSample(i),i));
             title(sprintf('Correlation to speaker no %d',i));
             hold off
     end

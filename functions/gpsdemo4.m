@@ -20,11 +20,12 @@ function gpsdemo4
 %               [4,1] : pseudoT
 %               [2,1] : position
 %               [1,1] : t
-%                       
+%             
+
 %% constants:
 SPEAKER_POS=[9.19,2.82;9.12,6.63;0.3,1.39;0.3,6.11];
 SERIES_FILE="SAT_gold1023x5.txt";
-DURATION=10;
+%DURATION=10;
 FS=22050;
 SAMPLENUM=1;
 SPEAKERNUM=4;
@@ -35,8 +36,11 @@ importSeries=dlmread(SERIES_FILE);
 
 %% Record signal
 
-%recSignal=recordSignal(DURATION,FS);
-[recSignal,~]=audioread(which('Testaufnahme1.wav'));
+l=ceil(length(importSeries)/FS);
+%recSignal=recordSignal(l,FS);
+%[recSignal,~]=audioread("Testaufnahme1.wav");
+recSignal=evalin('base', 'recSignal');
+%assignin('base','recSignal',recSignal);
 
 %% calculate correlation and find max (find peaks)
 consLength=length(importSeries)*SAMPLENUM; %considered Length
@@ -47,16 +51,25 @@ end
 
 [~,maxSample]=max(correlationArray(:,:));
 pseudoT=maxSample'/FS;
+%pseudoT=[0.153;0.158;0.162;0.163];
 
+<<<<<<< HEAD
 %% plots
     generatePlots(importSeries, recSignal,correlationArray,maxSample,FS);
     
+=======
+>>>>>>> b98fb27b000034d67d5e1b6af8d4f5aee9cbec77
 %% gps correction
     [t,position] = gpsCorrection(SPEAKER_POS, pseudoT);
     
 %% map plot 
     Karte(position);
 
+%% plots
+    generatePlots(importSeries,recSignal,correlationArray,maxSample,FS);
+    
+
+    
 
 
 
