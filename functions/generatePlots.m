@@ -19,8 +19,8 @@ function generatePlots(importSeries, recSignal,correlationArray, maxSample,FS)
 
 %% Plot: recorded Signal
     figure('Name','Recorded Signal','NumberTitle','off'); 
-    t=1:length(recSignal);
-    plot(t/FS,recSignal);
+    t=(1:length(recSignal))/FS;
+    plot(t,recSignal);
     title('Signal from all speakers');
     xlabel('');
     ylabel('');

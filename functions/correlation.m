@@ -17,7 +17,7 @@ function result = correlation(x,y)
 %% Perform function
 
     N=min(length(y),length(x));
-    y=[y;zeros(size(y))];
+    y=[y;y];
     x=x-mean(x);
     y=y-mean(y);
     result=zeros(1,N);
@@ -25,7 +25,7 @@ function result = correlation(x,y)
         result(1,k)=abs(sum(y(k:N+k-1,1).*x(1:N,1)))/N;
     end
     result=abs(result)/N;
-    %result=fliplr(result); % for some reason only (y,x) works, so we flip the result
+    result=fliplr(result); % for some reason only (y,x) works, so we flip the result
 end
 
         %{

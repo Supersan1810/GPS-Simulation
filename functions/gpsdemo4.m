@@ -20,7 +20,8 @@ function gpsdemo4
 %               [4,1] : pseudoT
 %               [2,1] : position
 %               [1,1] : t
-%                       
+%             
+
 %% constants:
 SPEAKER_POS=[9.19,2.82;9.12,6.63;0.3,1.39;0.3,6.11];
 SERIES_FILE="SAT_gold1023x5.txt";
@@ -39,7 +40,7 @@ l=ceil(length(importSeries)/FS);
 %recSignal=recordSignal(l,FS);
 %[recSignal,~]=audioread("Testaufnahme1.wav");
 recSignal=evalin('base', 'recSignal');
-assignin('base','recSignal',recSignal);
+%assignin('base','recSignal',recSignal);
 
 %% calculate correlation and find max (find peaks)
 consLength=length(importSeries)*SAMPLENUM; %considered Length
