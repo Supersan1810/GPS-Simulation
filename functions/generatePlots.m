@@ -1,11 +1,14 @@
 function generatePlots(importSeries, recSignal,correlationArray, maxSample,FS)
 % Summary: generates plots showing the recorded Signal and its correlation
 % 
-% Matlab Herrler
-%-------------------------------------------------------------------------
-% Sandra García Bescós
-% Matrikelnummer: 4869045
-%-------------------------------------------------------------------------
+% ------------------------------------------------------------------------
+% Copyright (c) 2018. J. Gente, S. García Bescós
+% This code is released under the GNU General Public License Version 3.
+%
+% Project: Matlab Lecture, Hans Juergen Herrler
+% Authors: Sandra García Bescós, Johanna Gente
+% Version: 1.0
+% -------------------------------------------------------------------------
 %
 % function syntax:
 % function generatePlots(importSeries, recSignal,correlationArray, maxSample,FS)
