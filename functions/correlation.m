@@ -8,7 +8,7 @@ function result = correlation(x,y)
 % Project: Matlab Lecture, Hans Juergen Herrler
 % Authors: Sandra García Bescós, Johanna Gente
 % Version: 1.0
-%-------------------------------------------------------------------------
+% -------------------------------------------------------------------------
 %
 % Input Parameters: 
 %       double[N]               : x              signal to correlate

@@ -1,12 +1,14 @@
 function [t0,position] = gpsCorrection(speakerPos, pseudoT)
 % Summary: calculates correct position and time_shift for given psuedo time
 % 
-% 
-% Matlab Herrler
-%-------------------------------------------------------------------------
-% Sandra García Bescós
-% Matrikelnummer: 4869045
-%-------------------------------------------------------------------------
+% ------------------------------------------------------------------------
+% Copyright (c) 2018. J. Gente, S. García Bescós
+% This code is released under the GNU General Public License Version 3.
+%
+% Project: Matlab Lecture, Hans Juergen Herrler
+% Authors: Sandra García Bescós, Johanna Gente
+% Version: 1.0
+% -------------------------------------------------------------------------
 %
 % function syntax:
 % function 
