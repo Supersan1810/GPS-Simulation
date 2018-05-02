@@ -28,4 +28,3 @@ function result = correlation(x,y)
     result=abs(result)/N;
     result=fliplr(result); % for some reason only (y,x) works, so we flip the result
 end
-

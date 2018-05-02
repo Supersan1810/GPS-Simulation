@@ -8,26 +8,26 @@ function generatePlots(importSeries, recSignal,correlationArray, maxSample,FS)
 %-------------------------------------------------------------------------
 %
 % function syntax:
-% function generatePlots(importSerie, recSignal,correlation) 
-% input parameter:  importSeries    = series sounding thorugh speakers
-%                   recSignal       = recorded Signal
-%                   correlationArray     = calculated correlation between
-%                                     signals
+% function generatePlots(importSeries, recSignal,correlationArray, maxSample,FS)
+% input parameter:  importSeries        = series sounding through speakers
+%                   recSignal           = recorded Signal
+%                   correlationArray    = calculated correlation between
+%                                         signals
+%                   maxSamples          = peaks in correlation
+%                   FS                  = sample rate
 % 
-%
-%% Perform function
 
 %% Plot: recorded Signal
     figure('Name','Recorded Signal','NumberTitle','off'); 
     t=(1:length(recSignal))/FS;
     plot(t,recSignal);
     title('Signal from all speakers');
-    xlabel('');
+    xlabel('t in sec');
     ylabel('');
 
 %% Plot: recorded Signal and expected Signal from speakers
     figure('Name','Recorded Signal and Speaker Signal','NumberTitle','off'); 
-    window=20:40;
+    window=1:100;
     subplot(5,1,1);
         plot(recSignal(window));
         title('recordedSignal');
@@ -46,9 +46,7 @@ function generatePlots(importSeries, recSignal,correlationArray, maxSample,FS)
             plot(timeVector,correlationArray(:,i));
             scatter(maxSample(i)/FS*1000, correlationArray(maxSample(i),i));
             title(sprintf('Correlation to speaker no %d',i));
-            
             hold off
     end
-
 
 end
