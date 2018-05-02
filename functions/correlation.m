@@ -28,9 +28,4 @@ function result = correlation(x,y)
     result=fliplr(result); % for some reason only (y,x) works, so we flip the result
 end
 
-        %{
-            for n=1:N
-                result(1,k)=result(1,k)+y(n+k-1,1).*x(n,1);
-            end
-        %}
 

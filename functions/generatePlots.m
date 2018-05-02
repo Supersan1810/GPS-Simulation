@@ -8,15 +8,15 @@ function generatePlots(importSeries, recSignal,correlationArray, maxSample,FS)
 %-------------------------------------------------------------------------
 %
 % function syntax:
-% function generatePlots(importSerie, recSignal,correlation) 
-% input parameter:  importSeries    = series sounding thorugh speakers
-%                   recSignal       = recorded Signal
-%                   correlationArray     = calculated correlation between
-%                                     signals
+% function generatePlots(importSeries, recSignal,correlationArray, maxSample,FS)
+% input parameter:  importSeries        = series sounding through speakers
+%                   recSignal           = recorded Signal
+%                   correlationArray    = calculated correlation between
+%                                         signals
+%                   maxSamples          = peaks in correlation
+%                   FS                  = sample rate
 % 
-%
-%% Perform function
-    time=(1:length(recSignal))/FS;
+
 %% Plot: recorded Signal
     figure('Name','Recorded Signal','NumberTitle','off'); 
     t=(1:length(recSignal))/FS;
@@ -48,6 +48,5 @@ function generatePlots(importSeries, recSignal,correlationArray, maxSample,FS)
             title(sprintf('Correlation to speaker no %d',i));
             hold off
     end
-
 
 end
