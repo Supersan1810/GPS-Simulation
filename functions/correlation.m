@@ -1,20 +1,21 @@
 function result = correlation(x,y)
-% Summary: 
+% Calculates correlation function for x,y
 % 
-% Matlab Herrler
-%-------------------------------------------------------------------------
-% Sandra García Bescós
-% Matrikelnummer: 4869045
+% ------------------------------------------------------------------------
+% Copyright (c) 2018. J. Gente, S. García Bescós
+% This code is released under the GNU General Public License Version 3.
+%
+% Project: Matlab Lecture, Hans Juergen Herrler
+% Authors: Sandra García Bescós, Johanna Gente
+% Version: 1.0
 %-------------------------------------------------------------------------
 %
-% function syntax:
-% function result = corellation(x,y)
-% input parameter:  x            = signal
-%                   y            = signal
-% output parameter: 
-%                   result       = corellation
-%
-%% Perform function
+% Input Parameters: 
+%       double[N]               : x              signal to correlate
+%       double[N]               : y              signal to correlate
+% Output Parameters: 
+%       double[N]               : result         calculated correlation vector
+%%
 
     N=min(length(y),length(x));
     y=[y;y];
@@ -27,10 +28,4 @@ function result = correlation(x,y)
     result=abs(result)/N;
     result=fliplr(result); % for some reason only (y,x) works, so we flip the result
 end
-
-        %{
-            for n=1:N
-                result(1,k)=result(1,k)+y(n+k-1,1).*x(n,1);
-            end
-        %}
 
