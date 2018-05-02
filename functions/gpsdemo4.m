@@ -38,8 +38,8 @@ importSeries=dlmread(SERIES_FILE);
 
 l=ceil(length(importSeries)/FS);
 %recSignal=recordSignal(l,FS);
-[recSignal,~]=audioread("Testaufnahme1.wav");
-%recSignal=evalin('base', 'recSignal');
+%[recSignal,~]=audioread("Testaufnahme1.wav");
+recSignal=evalin('base', 'recSignal');
 %assignin('base','recSignal',recSignal);
 
 %% calculate correlation and find max (find peaks)
